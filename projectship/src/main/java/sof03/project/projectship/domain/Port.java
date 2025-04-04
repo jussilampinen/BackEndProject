@@ -18,7 +18,7 @@ public class Port {
     private String portName;
     private String portLocation;
 
-    @OneToMany(mappedBy = "shipType", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "port", cascade = CascadeType.ALL)
     private List<Ship> ships;
 
     public Port(){}

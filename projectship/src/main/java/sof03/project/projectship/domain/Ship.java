@@ -1,11 +1,15 @@
 package sof03.project.projectship.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Ship {
@@ -39,6 +43,14 @@ public class Ship {
     @ManyToOne
     @JoinColumn(name = "fateId")
     private Fate fate;
+
+    // FK Voyage or Event
+    @OneToMany(mappedBy = "ship", cascade = CascadeType.ALL)
+    private List<VoyageEvent> events;
+
+    // FK Ship-Captain
+    @OneToMany(mappedBy = "ship", cascade = CascadeType.ALL)
+    private List<ShipCaptain> shipCaptain;
     
 
     

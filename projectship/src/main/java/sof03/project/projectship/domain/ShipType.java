@@ -20,7 +20,7 @@ public class ShipType {
     @OneToMany(mappedBy = "shipType", cascade = CascadeType.ALL)
     private List<Ship> ships;
 
-    // Construvtors
+    // Constructors
     public ShipType(){}
 
     public ShipType(Long shipTypeId, String shipType) {
