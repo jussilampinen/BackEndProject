@@ -1,16 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Historical Ships</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 1em; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+        th, td { border: 1px solid #ccc; padding: 0.5em; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        h1 { text-align: center; }
+    </style>
 </head>
 <body>
-    <h1>List of Ships</h1>
+
+<h1>List of Historical Ships</h1>
+
+<table>
     <thead>
         <tr>
-            <th></th>
+            <th>Ship Name</th>
+            <th>Displacement (tons)</th>
+            <th>Length (m)</th>
+            <th>Beam (m)</th>
+            <th>Year Built</th>
+            <th>Type</th>
+            <th>Home Port</th>
+            <th>Owner</th>
+            <th>Fate</th>
+            <th>Events</th>
+            <th>Captains</th>
         </tr>
     </thead>
+    <tbody>
+        <tr th:each="ship : ${ships}">
+            <td th:text="${ship.shipName}">Titanic</td>
+            <td th:text="${ship.displacement}">52310</td>
+            <td th:text="${ship.length}">269.1</td>
+            <td th:text="${ship.beam}">28.2</td>
+            <td th:text="${ship.yearBuilt}">1912</td>
+            <td th:text="${ship.shipType.shipType}">Passenger Liner</td>
+            <td th:text="${ship.port.portName}">Southampton</td>
+            <td>
+                <span th:text="${ship.owner.name}">White Star Line</span><br/>
+                (<span th:text="${ship.owner.type}">Company</span>)
+            </td>
+            <td th:text="${ship.fate.description}">Sank during maiden voyage</td>
+
+            <!-- Events Column -->
+            <td>
+                <ul>
+                    <li th:each="event : ${ship.events}">
+                        <span th:text="'[' + event.eventType + '] at ' + event.location + ' on ' + event.date + ': ' + event.description">Event details</span>
+                    </li>
+                    <li th:if="${#lists.isEmpty(ship.events)}">No events recorded</li>
+                </ul>
+            </td>
+
+            <!-- Captains Column -->
+            <td>
+                <ul>
+                    <li th:each="record : ${ship.shipCaptain}">
+                        <span th:text="record.captain.name">Edward Smith</span>
+                        (<span th:text="record.startDate">Start</span> to 
+                         <span th:text="${record.endDate != null ? record.endDate : 'Present'}">End</span>)
+                    </li>
+                    <li th:if="${#lists.isEmpty(ship.shipCaptain)}">No captains assigned</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

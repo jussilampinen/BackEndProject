@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProjectshipApplication<projectship>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "sof03.project.projectship.ProjectshipApplication",
+            "projectName": "projectship",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

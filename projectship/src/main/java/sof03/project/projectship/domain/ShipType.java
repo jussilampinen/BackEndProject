@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 public class ShipType {
@@ -23,8 +24,7 @@ public class ShipType {
     // Constructors
     public ShipType(){}
 
-    public ShipType(Long shipTypeId, String shipType) {
-        this.shipTypeId = shipTypeId;
+    public ShipType(String shipType) {
         this.shipType = shipType;
     }
    

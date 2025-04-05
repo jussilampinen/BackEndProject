@@ -12,10 +12,12 @@ public class ShipController {
 
     @Autowired
     private ShipRepository shipRepository;
-
+    
     @GetMapping("/shiplist")
     public String shiplist(Model model){
-        model.addAttribute("shps", shipRepository.findAll());
+        model.addAttribute("ships", shipRepository.findAll());
         return "shiplist";
     }
 }
+
+
