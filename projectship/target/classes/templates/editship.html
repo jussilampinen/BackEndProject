@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Ship</title>
+</head>
+
+<body>
+
+    <h1>Edit Ship</h1>
+
+    <form action="#" th:action="@{/edit}" th:object="${ship}" method="post">
+        <input type="hidden" th:field="*{shipId}" />
+
+        <label for="shipName">Ship Name:</label>
+        <input type="text" id="shipName" th:field="*{shipName}" required /><br>
+
+        <label for="displacement">Displacement (tons):</label>
+        <input type="number" id="displacement" th:field="*{displacement}" required /><br>
+
+        <label for="length">Length (m):</label>
+        <input type="number" id="length" th:field="*{length}" required /><br>
+
+        <label for="beam">Beam (m):</label>
+        <input type="number" id="beam" th:field="*{beam}" required /><br>
+
+        <label for="yearBuilt">Year Built:</label>
+        <input type="number" id="yearBuilt" th:field="*{yearBuilt}" required /><br>
+
+        <label>Ship Type:
+            <select name="shipTypeId">
+                <option th:each="shipType : ${shipTypes}" th:value="${shipType.shipTypeId}"
+                    th:text="${shipType.shipType}">
+                </option>
+            </select>
+        </label><br>
+
+        <label>Port:
+            <select name="portId">
+                <option th:each="port : ${ports}" th:value="${port.portId}" th:text="${port.portName}">Port Name
+                </option>
+            </select>
+        </label><br>
+
+        <label>Owner:
+            <select name="ownerId">
+                <option th:each="owner : ${owners}" th:value="${owner.ownerId}" th:text="${owner.name}">Owner</option>
+            </select>
+        </label><br>
+
+        <label>Fate:
+            <select name="fateId">
+                <option value="">-- None --</option>
+                <option th:each="fate : ${fates}" th:value="${fate.fateId}" th:text="${fate.description}">Fate</option>
+            </select>
+        </label><br>
+
+        <label>Captain:
+            <select name="captainId">
+                <option th:each="captain : ${captains}" th:value="${captain.captainId}" th:text="${captain.name}">
+                </option>
+            </select>
+        </label><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+    <a href="/shiplist">Back to Ship List</a>
+
+</body>
+
+</html>

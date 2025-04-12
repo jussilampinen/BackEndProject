@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Add Captain</title></head>
+<body>
+    <h1>Add New Captain</h1>
+    <form action="#" th:action="@{/addCaptain}" method="post">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Year of Birth: <input type="number" name="birthYear" required></label><br>
+        <label>Nationality: <input type="text" name="nationality" required></label><br>
+        <input type="hidden" name="referer" th:value="${referer}" />
+        <button type="submit">Add Captain</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Port</title>
+</head>
+
+<body>
+    <h1>Add New Port</h1>
+    <form action="#" th:action="@{/addPort}" method="post">
+        <label>Port Name: <input type="text" name="portName" required></label><br>
+        <label>Location: <input type="text" name="portLocation" required></label><br>
+        <input type="hidden" name="referer" th:value="${referer}" />
+        <button type="submit">Add Port</button>
+    </form>
+</body>
+
+</html>

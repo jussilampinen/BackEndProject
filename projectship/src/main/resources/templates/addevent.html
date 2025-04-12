@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Voyage Event</title>
+</head>
+<body>
+
+<h1>Add a Voyage Event</h1>
+
+<!-- Form to add a Voyage Event -->
+<form action="#" th:action="@{/addvoyageevent}" th:object="${voyageEvent}" method="post">
+
+    <label for="eventType">Event Type:</label>
+    <input type="text" id="eventType" th:field="*{eventType}" placeholder="Enter event type" required/>
+    <br/>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" th:field="*{location}" placeholder="Enter location" required/>
+    <br/>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required/>
+    <br/>
+
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" placeholder="Enter description" required></textarea>
+    <br/>
+
+    <label for="ship">Ship:</label>
+    <select id="ship" th:field="*{ship}" required>
+        <option value="" disabled selected>Select a ship</option>
+        <option th:each="ship : ${ships}" th:value="${ship.shipId}" th:text="${ship.shipName}"></option>
+    </select>
+    <br/>
+
+    <input type="hidden" name="referer" th:value="${referer}" />
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+</body>
+</html>

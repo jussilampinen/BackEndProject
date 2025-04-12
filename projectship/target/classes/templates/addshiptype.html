@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Add Ship Type</title></head>
+<body>
+    <h1>Add New Ship Type</h1>
+    <form action="#" th:action="@{/addShipType}" method="post">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <input type="hidden" name="referer" th:value="${referer}" />
+        <button type="submit">Add Ship Type</button>
+    </form>
+</body>
+</html>

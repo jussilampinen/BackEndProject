@@ -39,9 +39,6 @@ public class ShipCaptain {
     }
 
     public ShipCaptain(Ship ship, Captain captain, LocalDate startDate, LocalDate endDate) {
-        if (ship.getShipId() == null || captain.getCaptainId() == null) {
-            throw new IllegalStateException("Ship and Captain must be saved before creating ShipCaptain");
-        }
         this.ship = ship;
         this.captain = captain;
         this.startDate = startDate;
@@ -88,5 +85,4 @@ public class ShipCaptain {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
 }

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Add Owner</title></head>
+<body>
+    <h1>Add New Owner</h1>
+    <form action="#" th:action="@{/addOwner}" method="post">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Type: <input type="text" name="type" required></label><br>
+        <label>Country: <input type="text" name="country" required></label><br>
+        <input type="hidden" name="referer" th:value="${referer}" />
+        <button type="submit">Add Owner</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Add Fate</title></head>
+<body>
+    <h1>Add New Fate</h1>
+    <form action="#" th:action="@{/addFate}" method="post">
+        <label>Description: <input type="text" name="description" required></label><br>
+        <input type="hidden" name="referer" th:value="${referer}" />
+        <button type="submit">Add Fate</button>
+    </form>
+</body>
+</html>
