@@ -40,7 +40,7 @@ public class ShipFormController {
 
     @GetMapping("/addshipform")
     public String addShipForm(Model model) {
-        model.addAttribute("captains", captainRepository.findAll());
+        // model.addAttribute("captains", captainRepository.findAll());
         model.addAttribute("ports", portRepository.findAll());
         model.addAttribute("shipTypes", shipTypeRepository.findAll());
         model.addAttribute("owners", ownerRepository.findAll());
@@ -55,13 +55,13 @@ public class ShipFormController {
             @RequestParam double length,
             @RequestParam double beam,
             @RequestParam int yearBuilt,
-            @RequestParam Long captainId,
+            // @RequestParam Long captainId,
             @RequestParam Long portId,
             @RequestParam Long shipTypeId,
             @RequestParam Long ownerId,
             @RequestParam(required = false) Long fateId,
-            @RequestParam LocalDate startDate,
-            @RequestParam(required = false) LocalDate endDate,
+            // @RequestParam LocalDate startDate,
+            // @RequestParam(required = false) LocalDate endDate,
             RedirectAttributes redirectAttributes) {
 
         // Create new Ship
@@ -103,6 +103,7 @@ public class ShipFormController {
         // Save the Ship
         shipRepository.save(ship);
 
+        /* 
         // Retrieve the captain by Id
         Captain captain = captainRepository.findById(captainId).orElse(null);
 
@@ -116,12 +117,14 @@ public class ShipFormController {
         
         // Save ShipCaptain
         shipCaptainRepository.save(shipCaptain);
+         */
 
         return "redirect:/shiplist";
     }
+       
 
     // CAPTAIN
-
+/* 
     @GetMapping("/addcaptainform")
     public String addCaptainForm(@RequestHeader(value = "Referer", defaultValue = "/") String referer) {
         return "addcaptain";
@@ -136,7 +139,7 @@ public class ShipFormController {
        
         return "redirect:" + referer;
     }
-
+   */ 
     // PORT
 
     @GetMapping("/addportform")

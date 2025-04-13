@@ -31,8 +31,8 @@ public class ShipController {
     private OwnerRepository ownerRepository;
     @Autowired
     private FateRepository fateRepository;
-    @Autowired
-    private ShipCaptainRepository shipCaptainRepository;
+    // @Autowired
+    // private ShipCaptainRepository shipCaptainRepository;
 
     @GetMapping("/shiplist")
     public String shiplist(Model model) {
@@ -49,12 +49,25 @@ public class ShipController {
         model.addAttribute("ports", portRepository.findAll());
         model.addAttribute("owners", ownerRepository.findAll());
         model.addAttribute("fates", fateRepository.findAll());
-        model.addAttribute("captains", shipCaptainRepository.findAll());
+        // model.addAttribute("captains", shipCaptainRepository.findAll());
         return "editship";
     }
 
     @PostMapping("/edit")
-    public String saveEditedShip(@ModelAttribute("ships") Ship ship) {
+    public String saveEditedShip(@ModelAttribute("ship") Ship ship) {
+        if (ship.getShipType() != null && ship.getShipType().getShipTypeId() != null) {
+            ship.setShipType(shipTypeRepository.findById(ship.getShipType().getShipTypeId()).orElse(null));
+        }
+        if (ship.getPort() != null && ship.getPort().getPortId() != null) {
+            ship.setPort(portRepository.findById(ship.getPort().getPortId()).orElse(null));
+        }
+        if (ship.getOwner() != null && ship.getOwner().getOwnerId() != null) {
+            ship.setOwner(ownerRepository.findById(ship.getOwner().getOwnerId()).orElse(null));
+        }
+        if (ship.getFate() != null && ship.getFate().getFateId() != null) {
+            ship.setFate(fateRepository.findById(ship.getFate().getFateId()).orElse(null));
+        }
+
         shipRepository.save(ship);
         return "redirect:/shiplist";
     }

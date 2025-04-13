@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import sof03.project.projectship.domain.Captain;
 import sof03.project.projectship.domain.CaptainRepository;
@@ -24,6 +25,8 @@ import sof03.project.projectship.domain.ShipCaptainRepository;
 import sof03.project.projectship.domain.ShipRepository;
 import sof03.project.projectship.domain.ShipType;
 import sof03.project.projectship.domain.ShipTypeRepository;
+import sof03.project.projectship.domain.User;
+import sof03.project.projectship.domain.UserRepository;
 import sof03.project.projectship.domain.VoyageEvent;
 
 @SpringBootApplication
@@ -37,8 +40,11 @@ public class ProjectshipApplication {
 	public CommandLineRunner demo(ShipRepository shipRepository, OwnerRepository ownerRepository,
 			ShipCaptainRepository shipCaptainRepository,
 			ShipTypeRepository shipTypeRepository, PortRepository portRepository, FateRepository fateRepository,
-			CaptainRepository captainRepository) {
+			CaptainRepository captainRepository, UserRepository userRepository) {
 		return (args) -> {
+			User admin = new User("admin", new BCryptPasswordEncoder().encode("admin"), "ADMIN");
+			User user = new User("user", new BCryptPasswordEncoder().encode("user"), "USER");
+    
 			// Add owner
 			Owner whiteStarLine = new Owner("White Star Line", "Company", "United Kingdom");
 			ownerRepository.save(whiteStarLine);
@@ -97,8 +103,8 @@ public class ProjectshipApplication {
 					southampton,
 					whiteStarLine,
 					sank,
-					new ArrayList<>(),
 					new ArrayList<>()));
+					//new ArrayList<>()));
 
 			Ship lusitania = shipRepository.save(new Ship(
 					"Lusitania",
@@ -110,8 +116,8 @@ public class ProjectshipApplication {
 					liverpool,
 					cunardLine,
 					torpedoed,
-					new ArrayList<>(),
 					new ArrayList<>()));
+					// new ArrayList<>()));
 
 			Ship bounty = shipRepository.save(new Ship(
 					"HMS Bounty",
@@ -123,9 +129,9 @@ public class ProjectshipApplication {
 					portsmouth,
 					royalNavy,
 					mutinied,
-					new ArrayList<>(),
 					new ArrayList<>()));
-
+					// new ArrayList<>()));
+/* 
 			// For my own Sanity
 			System.out.println("\n \nBefore creating the ShipCaptain: \n Captain ID: " + edwardSmith.getCaptainId()
 					+ ", Ship ID " + titanic.getShipId() + "\n \n ");
@@ -162,7 +168,7 @@ public class ProjectshipApplication {
 			shipRepository.save(bounty);
 
 			System.out.println("\n\n ShipCaptainId: " + scTitanic.getId() + "\n \n");
-
+*/
 			// Add Events
 			VoyageEvent voyage1 = new VoyageEvent(titanic, "Maiden Voyage", "Atlantic Ocean", LocalDate.of(1912, 4, 10),
 					"Departed from Southampton");
@@ -185,5 +191,6 @@ public class ProjectshipApplication {
 			shipRepository.save(bounty);
 		};
 	}
-
 }
+
+

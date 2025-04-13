@@ -17,23 +17,21 @@
         <input type="number" step="0.01" name="beam" id="beam" required><br>
         <label>Year Built: <input type="number" name="yearBuilt" required></label><br>
 
-        <!-- Captain -->
+        <!-- Captain (Removed for sanity reasons)
         <label>Captain:
             <select name="captainId">
                 <option th:each="captain : ${captains}" th:value="${captain.captainId}" th:text="${captain.name}">
                 </option>
             </select>
         </label><br>
-
-
-        <!-- Start Date For the Captain (required) -->
+        
         <label for="startDate">Captain Start Date:</label>
         <input type="date" name="startDate" required><br>
 
-        <!-- End Date For the Captain (optional) -->
+         End Date For the Captain (optional) 
         <label for="endDate">Captain End Date (Optional):</label>
         <input type="date" name="endDate"><br>
-
+    -->
         <!-- Port -->
         <label>Port:
             <select name="portId">
@@ -72,7 +70,7 @@
     <br>
 
     <div>
-        <a th:href="@{/addcaptainform}">Add New Captain</a><br>
+        <!--<a th:href="@{/addcaptainform}">Add New Captain</a><br>-->
         <a th:href="@{/addevent}">Add New Event</a><br>
         <a th:href="@{/addfateform}">Add New Fate</a><br>
         <a th:href="@{/addshiptypeform}">Add New Ship Type</a><br>

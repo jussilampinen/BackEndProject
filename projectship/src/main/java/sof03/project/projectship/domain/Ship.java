@@ -50,16 +50,15 @@ public class Ship {
     private List<VoyageEvent> events;
 
     // FK Ship-Captain
-    @OneToMany(mappedBy = "ship", cascade = CascadeType.ALL)
-    private List<ShipCaptain> shipCaptain = new ArrayList<>();
+    // @OneToMany(mappedBy = "ship", cascade = CascadeType.ALL)
+    // private List<ShipCaptain> shipCaptain = new ArrayList<>();
 
     // Constructors
     public Ship() {
     }
 
     public Ship(String shipName, double displacement, double length, double beam, int yearBuilt,
-            ShipType shipType, Port port, Owner owner, Fate fate, List<VoyageEvent> events,
-            List<ShipCaptain> shipCaptain) {
+            ShipType shipType, Port port, Owner owner, Fate fate, List<VoyageEvent> events) {
         this.shipName = shipName;
         this.displacement = displacement;
         this.length = length;
@@ -70,7 +69,7 @@ public class Ship {
         this.owner = owner;
         this.fate = fate;
         this.events = events;
-        this.shipCaptain = shipCaptain;
+        // this.shipCaptain = shipCaptain;
     }
 
     // Getters & Setters
@@ -163,12 +162,12 @@ public class Ship {
         this.events = events;
     }
 
-    public List<ShipCaptain> getShipCaptain() {
-        return shipCaptain;
-    }
+    //public List<ShipCaptain> getShipCaptain() {
+    //    return shipCaptain;
+    //}
 
-    public void setShipCaptain(List<ShipCaptain> shipCaptain) {
-        this.shipCaptain = shipCaptain;
-    }
+    //public void setShipCaptain(List<ShipCaptain> shipCaptain) {
+    //    this.shipCaptain = shipCaptain;
+    //}
 
 }

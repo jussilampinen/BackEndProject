@@ -29,39 +29,40 @@
         <input type="number" id="yearBuilt" th:field="*{yearBuilt}" required /><br>
 
         <label>Ship Type:
-            <select name="shipTypeId">
+            <select th:field="*{shipType.shipTypeId}">
                 <option th:each="shipType : ${shipTypes}" th:value="${shipType.shipTypeId}"
-                    th:text="${shipType.shipType}">
-                </option>
+                    th:text="${shipType.shipType}">Ship Type</option>
             </select>
         </label><br>
-
+        
         <label>Port:
-            <select name="portId">
-                <option th:each="port : ${ports}" th:value="${port.portId}" th:text="${port.portName}">Port Name
-                </option>
+            <select th:field="*{port.portId}">
+                <option th:each="port : ${ports}" th:value="${port.portId}" th:text="${port.portName}">Port</option>
             </select>
         </label><br>
-
+        
         <label>Owner:
-            <select name="ownerId">
+            <select th:field="*{owner.ownerId}">
                 <option th:each="owner : ${owners}" th:value="${owner.ownerId}" th:text="${owner.name}">Owner</option>
             </select>
         </label><br>
-
+        
         <label>Fate:
-            <select name="fateId">
+            <select th:field="*{fate.fateId}">
                 <option value="">-- None --</option>
                 <option th:each="fate : ${fates}" th:value="${fate.fateId}" th:text="${fate.description}">Fate</option>
             </select>
         </label><br>
+        
 
+        <!-- Removed for sanity reasons
         <label>Captain:
             <select name="captainId">
                 <option th:each="captain : ${captains}" th:value="${captain.captainId}" th:text="${captain.name}">
                 </option>
             </select>
         </label><br>
+    -->
 
         <button type="submit">Save Changes</button>
     </form>
