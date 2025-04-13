@@ -44,6 +44,9 @@ public class ProjectshipApplication {
 		return (args) -> {
 			User admin = new User("admin", new BCryptPasswordEncoder().encode("admin"), "ADMIN");
 			User user = new User("user", new BCryptPasswordEncoder().encode("user"), "USER");
+
+			userRepository.save(admin);
+			userRepository.save(user);
     
 			// Add owner
 			Owner whiteStarLine = new Owner("White Star Line", "Company", "United Kingdom");

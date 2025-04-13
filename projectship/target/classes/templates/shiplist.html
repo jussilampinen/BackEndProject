@@ -53,7 +53,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
                 <th>Fate</th>
                 <th>Events</th>
                 <!--<th>Captains</th>-->
-                <th>Functions</th>
+                <th sec:authorize="hasRole('ADMIN')">Functions</th>
             </tr>
         </thead>
         <tbody>
@@ -114,7 +114,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
         <a th:href="@{/addownerform}">Add New Owner</a><br>
         <a th:href="@{/addportform}">Add New Port</a><br>
     </div>
-
+    <br>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button type="submit">Logout</button>
+    </form>
 </body>
 
 </html>
