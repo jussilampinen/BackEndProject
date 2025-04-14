@@ -167,7 +167,7 @@ public class ShipFormController {
 
         model.addAttribute("referer", referer);
 
-        return "addShipType";
+        return "addshiptype";
     }
 
     @PostMapping("/addShipType")
@@ -185,7 +185,7 @@ public class ShipFormController {
         
         model.addAttribute("referer", referer);
         
-        return "addOwner";
+        return "addowner";
     }
 
     @PostMapping("/addOwner")
@@ -205,7 +205,7 @@ public class ShipFormController {
 
         model.addAttribute("referer", referer);
 
-        return "addFate";
+        return "addfate";
     }
 
     @PostMapping("/addFate")
